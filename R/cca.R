@@ -24,14 +24,14 @@ cca <- function(cm){
   X <- sum(is.na(cm))
   CCA_Proportion <- (N-r)/((r*c)-r-X)
   CCA_Percentage <- round(CCA_Proportion*100, digits = 1)
-  Structural_zeros <- sum(is.na(cm))
 
 
   if (sum(is.na(cm)) == 0) {
     res <- data.frame(reviews, N, r, c, CCA_Proportion, CCA_Percentage, stringsAsFactors=FALSE)
 
   } else {
-    res <- data.frame(reviews, N, r, c, Structural_zeros, CCA_Proportion, CCA_Percentage, stringsAsFactors=FALSE)
+    res <- data.frame(reviews, N, r, c, X, CCA_Proportion, CCA_Percentage, stringsAsFactors=FALSE)
+    names(res)[names(res) == 'X'] <- 'Structural_zeros'
     message("the CCA formula has been adjusted for structural zeros")
   }
 
