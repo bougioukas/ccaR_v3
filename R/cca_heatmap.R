@@ -19,9 +19,9 @@ cca_heatmap <- function(cm, fontsize=5, chroma="#527e11"){
 
     # create a table with all the parameters
 
-    V1<-c()
-    V2<-c()
-    CCA_Percentage<-0
+    V1 <- c()
+    V2 <- c()
+    CCA_Percentage <- 0
 
     a <- cca_table(cm)
     cm <- cm[, -1]
@@ -54,7 +54,7 @@ cca_heatmap <- function(cm, fontsize=5, chroma="#527e11"){
     # CCA heatmap --------------------------------------------------------------------------------
 
 
-    heat_cca <- ggplot2::ggplot(data = data_hm, ggplot2::aes(x = V1, y = V2)) +
+   cca_heatmap <- ggplot2::ggplot(data = data_hm, ggplot2::aes(x = V1, y = V2)) +
         ggplot2::theme_classic(base_size = 16) +
         ggplot2::geom_tile(ggplot2::aes(fill = CCA_Percentage), color='grey') +
         ggplot2::geom_tile(data = data_hm2, ggplot2::aes(x = V3, y = V4), fill = "grey", color='grey', inherit.aes = F) +
@@ -71,5 +71,5 @@ cca_heatmap <- function(cm, fontsize=5, chroma="#527e11"){
             axis.text.x=ggplot2::element_text(angle=90, vjust = 0.5, hjust=0.3
             ))
 
-    return(heat_cca)
+    return(cca_heatmap)
 }
